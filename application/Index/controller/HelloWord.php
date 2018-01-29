@@ -5,7 +5,8 @@ class HelloWord
 {
     public function index()
     {
-        return 'hello word!';
+        return 'url: ' . request()->url() . '<br/>';
+//        return 'hello word!';
     }
 
 }

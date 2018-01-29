@@ -1,0 +1,26 @@
+#<IfModule mod_rewrite.c>
+#  Options +FollowSymlinks -Multiviews
+#  RewriteEngine On
+#
+#  RewriteCond %{REQUEST_FILENAME} !-d
+#  RewriteCond %{REQUEST_FILENAME} !-f
+#  RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+#</IfModule>
+
+#phpstudy的配置文件
+<IfModule mod_rewrite.c>
+Options +FollowSymlinks -Multiviews
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [L,E=PATH_INFO:$1]
+</IfModule>
+
+#如果你使用的apache版本使用上面的方式无法正常隐藏index.php，可以尝试使用下面的方式配置.htaccess文件：
+#<IfModule mod_rewrite.c>
+#Options +FollowSymlinks -Multiviews
+#RewriteEngine on
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule ^(.*)$ index.php?/$1 [QSA,PT,L]
+#</IfModule>
